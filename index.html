@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndGame V2 - DDOS Prevention System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .warning h2 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .info h2 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .tech-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            text-align: center;
+            color: #666;
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EndGame V2</h1>
+        <p class="subtitle">Onion Service DDOS Prevention Front System</p>
+        
+        <div class="warning">
+            <h2>⚠️ Cannot Run on Replit</h2>
+            <p>This project is <strong>system infrastructure software</strong> designed for bare metal Debian 10 servers. It cannot run in Replit's containerized environment because it requires:</p>
+            <ul>
+                <li>Root/sudo system access</li>
+                <li>Custom NGINX compilation with specialized modules</li>
+                <li>Tor daemon and system service management</li>
+                <li>Modification of system files in <code>/etc/</code></li>
+                <li>Full network and firewall control</li>
+            </ul>
+        </div>
+        
+        <div class="info">
+            <h2>What is EndGame V2?</h2>
+            <p>EndGame is a comprehensive DDOS prevention system for Tor onion services. It acts as a protective front-end layer that:</p>
+            <ul>
+                <li>Filters malicious traffic using NGINX with Lua scripting</li>
+                <li>Challenges visitors with clock-based captchas</li>
+                <li>Implements rate limiting based on Tor circuit IDs</li>
+                <li>Protects backend onion services from attacks</li>
+                <li>Works with OnionBalance for load distribution</li>
+            </ul>
+        </div>
+        
+        <h2 style="margin-top: 30px; margin-bottom: 15px; color: #667eea;">Technology Stack</h2>
+        <div class="tech-stack">
+            <div class="tech-item">
+                <strong>NGINX</strong>
+                <span>Custom compiled with Lua, NAXSI WAF, and Socks modules</span>
+            </div>
+            <div class="tech-item">
+                <strong>Tor</strong>
+                <span>Onion service hosting and circuit management</span>
+            </div>
+            <div class="tech-item">
+                <strong>Lua/LuaJIT</strong>
+                <span>Request filtering and captcha generation</span>
+            </div>
+            <div class="tech-item">
+                <strong>OnionBalance</strong>
+                <span>V3 onion load balancing</span>
+            </div>
+        </div>
+        
+        <div class="info" style="margin-top: 30px;">
+            <h2>Proper Deployment</h2>
+            <p><strong>Prerequisites:</strong></p>
+            <ul>
+                <li>Dedicated Debian 10 server (4+ CPU cores @ 3GHz, 4GB RAM)</li>
+                <li>Root access</li>
+                <li>Understanding of Tor onion services</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Setup Steps:</strong></p>
+            <ol style="margin-left: 20px;">
+                <li>Configure OnionBalance master onion</li>
+                <li>Edit <code>setup.sh</code> with your settings</li>
+                <li>Run <code>./getdependencies.sh</code></li>
+                <li>Execute <code>./setup.sh</code> as root</li>
+                <li>Scale out with multiple front servers</li>
+            </ol>
+        </div>
+        
+        <div class="footer">
+            <p>Provided by Dread and White House Market</p>
+            <p style="margin-top: 10px;">See <code>README.MD</code> for complete documentation</p>
+        </div>
+    </div>
+</body>
+</html>

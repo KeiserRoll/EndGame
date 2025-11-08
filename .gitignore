@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Dependencies folder (created by getdependencies.sh)
+dependencies/
+
+# Compiled NGINX
+nginx-*/
+
+# Logs
+*.log
+/var/log/
+
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Tor files
+/etc/tor/
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
