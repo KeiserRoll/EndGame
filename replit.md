@@ -19,9 +19,27 @@ This is **EndGame V2**, a DDOS prevention and security system for Tor onion serv
 4. **System-specific**: Designed exclusively for Debian 10 bare metal servers
 5. **Network configuration**: Needs low-level network and firewall control
 
-## Project Structure
+## Advanced Security Features
 
-### Core Components
+In addition to V3 Onion Management, EndGame V2 includes several other critical security components:
+
+### 1. Web Application Firewall (NAXSI)
+- **Rulesets**: Includes `naxsi_core.rules` for blocking common web attacks (SQLi, XSS, RFI).
+- **Custom Whitelisting**: `naxsi_whitelist.rules` allows for application-specific tuning.
+- **Circuit Killing**: Malicious requests triggered via WAF can automatically trigger a Tor circuit reset.
+
+### 2. System Hardening (Sysctl)
+- **Network Optimization**: The included `sysctl.conf` tunes `net.core.somaxconn` and `net.core.netdev_max_backlog` to handle massive concurrent connection surges.
+- **SYN Protection**: Enhanced SYN cookie and spoof protection configuration.
+
+### 3. Vanguards Protection
+- Protects against guard discovery and traffic analysis attacks.
+- Integrated into the `startup.sh` and `onionbalance.sh` workflows.
+
+### 4. Lua-based Rate Limiting
+- **Dual-Layer Protection**: Limits are applied to both the Tor Circuit ID (`$proxy_protocol_addr`) and the custom captcha cookie (`$cookie_dcap`).
+- **Dynamic Blacklisting**: Cookies that fail validation are temporarily blacklisted across the NGINX shared dictionary.
+
 
 - **nginx.conf** - Main NGINX configuration with custom modules
 - **site.conf** - Virtual host configuration with Lua integration
