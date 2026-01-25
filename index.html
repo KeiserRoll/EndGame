@@ -131,16 +131,19 @@
         <h1>EndGame V2</h1>
         <p class="subtitle">Onion Service DDOS Prevention Front System</p>
         
-        <div class="warning">
-            <h2>⚠️ Cannot Run on Replit</h2>
-            <p>This project is <strong>system infrastructure software</strong> designed for bare metal Debian 10 servers. It cannot run in Replit's containerized environment because it requires:</p>
+        <div class="info">
+            <h2>🛡️ Onion Management (V3)</h2>
+            <p>This project includes <strong>V3 Onion Management</strong> through OnionBalance scripts located in <code>LOOKHERE-scripts/onionbalance/</code>. This system allows you to:</p>
             <ul>
-                <li>Root/sudo system access</li>
-                <li>Custom NGINX compilation with specialized modules</li>
-                <li>Tor daemon and system service management</li>
-                <li>Modification of system files in <code>/etc/</code></li>
-                <li>Full network and firewall control</li>
+                <li><strong>Unified Front</strong>: Combine multiple independent front-end onions into a single address.</li>
+                <li><strong>OnionBalance V3</strong>: Uses the latest Tor V3 descriptor system for high availability.</li>
+                <li><strong>Scaling</strong>: Overcomes introduction point limits to handle massive attack volumes.</li>
             </ul>
+        </div>
+
+        <div class="warning">
+            <h2>⚠️ Deployment Note</h2>
+            <p>The OnionBalance system requires its own dedicated server (2 CPU / 2GB RAM recommended) separate from your front-end cluster. The scripts provided automate the setup of Tor, Vanguards, and OnionBalance V3.</p>
         </div>
         
         <div class="info">
@@ -151,7 +154,6 @@
                 <li>Challenges visitors with clock-based captchas</li>
                 <li>Implements rate limiting based on Tor circuit IDs</li>
                 <li>Protects backend onion services from attacks</li>
-                <li>Works with OnionBalance for load distribution</li>
             </ul>
         </div>
         
@@ -171,31 +173,13 @@
             </div>
             <div class="tech-item">
                 <strong>OnionBalance</strong>
-                <span>V3 onion load balancing</span>
+                <span>V3 onion load balancing & management</span>
             </div>
-        </div>
-        
-        <div class="info" style="margin-top: 30px;">
-            <h2>Proper Deployment</h2>
-            <p><strong>Prerequisites:</strong></p>
-            <ul>
-                <li>Dedicated Debian 10 server (4+ CPU cores @ 3GHz, 4GB RAM)</li>
-                <li>Root access</li>
-                <li>Understanding of Tor onion services</li>
-            </ul>
-            <p style="margin-top: 15px;"><strong>Setup Steps:</strong></p>
-            <ol style="margin-left: 20px;">
-                <li>Configure OnionBalance master onion</li>
-                <li>Edit <code>setup.sh</code> with your settings</li>
-                <li>Run <code>./getdependencies.sh</code></li>
-                <li>Execute <code>./setup.sh</code> as root</li>
-                <li>Scale out with multiple front servers</li>
-            </ol>
         </div>
         
         <div class="footer">
             <p>Provided by Dread and White House Market</p>
-            <p style="margin-top: 10px;">See <code>README.MD</code> for complete documentation</p>
+            <p style="margin-top: 10px;">See <code>LOOKHERE-scripts/onionbalance/README.MD</code> for management details</p>
         </div>
     </div>
 </body>

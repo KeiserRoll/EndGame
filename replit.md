@@ -79,15 +79,23 @@ This is **EndGame V2**, a DDOS prevention and security system for Tor onion serv
 - `naxsi_whitelist.rules` - WAF whitelist for your specific application
 - `site.conf` - Rate limiting values (lines 114-115, 263, 269)
 
-## Architecture
+## Onion Management (V3)
 
-```
-Internet → OnionBalance Master Onion
-    ↓
-Multiple EndGame Fronts (this project)
-    ↓
-Backend Onion Service (your actual application)
-```
+The project includes built-in support for **V3 Onion Management** via OnionBalance. 
+
+### Location
+- Scripts and documentation are in `LOOKHERE-scripts/onionbalance/`.
+
+### Key Features
+- **Scalability**: Overcomes the Tor introduction point limit by load-balancing across multiple front instances.
+- **OnionBalance V3**: Specialized support for version 3 onion services with distinct descriptors.
+- **Automated Setup**: The `onionbalance.sh` script handles the installation of OnionBalance, Tor, and Vanguards on a management server.
+
+### Configuration
+1. Install on a separate 2 CPU / 2GB RAM server.
+2. Modify `params.py` to set `N_INTROS_PER_INSTANCE = 1` as recommended in the onionbalance README.
+3. Use `onionbalance-config` to generate your master onion and instance keys.
+
 
 Each EndGame front:
 1. Receives Tor connections
