@@ -143,6 +143,22 @@
             </ul>
         </div>
 
+        <div class="info">
+            <h2>Penetration Testing Toolkit</h2>
+            <p>Includes a built-in pentest suite (<code>pentest/endgame_pentest.py</code>) to validate all security layers after deployment. Tests 15 categories across 40+ checks:</p>
+            <ul>
+                <li><strong>WAF Validation</strong>: SQLi, XSS, directory traversal, and RFI attack vectors</li>
+                <li><strong>Rate Limit Testing</strong>: Burst flood simulation against circuit and cookie limits</li>
+                <li><strong>Session Security</strong>: Cookie forgery, HttpOnly/SameSite flags, blacklist enforcement</li>
+                <li><strong>Protocol Checks</strong>: Host header, HTTP methods, User-Agent, Referer, Tor2Web blocking</li>
+                <li><strong>Header Audit</strong>: Server identity hiding, X-Frame-Options, X-Content-Type-Options</li>
+            </ul>
+            <pre style="background:#1a1a2e;color:#0f0;padding:15px;border-radius:6px;margin-top:15px;overflow-x:auto;font-size:0.85em;">python3 pentest/endgame_pentest.py -t YOUR_ONION.onion
+python3 pentest/endgame_pentest.py -t 10.10.10.10 -p 80 --no-tor
+python3 pentest/endgame_pentest.py -t TARGET --test-waf
+python3 pentest/endgame_pentest.py -t TARGET --test-rate</pre>
+        </div>
+
         <div class="warning">
             <h2>⚠️ Deployment Reminder</h2>
             <p>This is system-level infrastructure. Deployment requires a dedicated Debian 10 environment with root access. See <code>replit.md</code> for full details.</p>

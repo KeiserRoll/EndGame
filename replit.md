@@ -130,9 +130,51 @@ This is designed for **darknet marketplace operators** and **high-value onion se
 - Need for anonymity preservation
 - High availability requirements
 
+## Penetration Testing Toolkit
+
+A comprehensive Python-based pentest suite is included at `pentest/endgame_pentest.py` to validate all security layers after deployment.
+
+### Test Categories (15 categories, 40+ checks)
+1. Connectivity
+2. Host Header Validation
+3. HTTP Method Filtering (PUT/DELETE/PATCH/OPTIONS/TRACE)
+4. User-Agent Enforcement
+5. POST Referer Validation
+6. Cookie/Session System (queue cookie, HttpOnly, SameSite)
+7. Forged Cookie Rejection
+8. Rate Limiting (circuit + cookie)
+9. WAF - SQL Injection (6 vectors)
+10. WAF - XSS (6 vectors)
+11. WAF - Directory Traversal (4 vectors)
+12. WAF - RFI (4 vectors)
+13. Security Headers
+14. Tor2Web Proxy Blocking
+15. Kill Endpoint
+
+### Usage
+```bash
+# Full suite against onion target
+python3 pentest/endgame_pentest.py -t YOUR_ONION.onion
+
+# Against IP target
+python3 pentest/endgame_pentest.py -t 10.10.10.10 -p 80 --no-tor
+
+# Selective testing
+python3 pentest/endgame_pentest.py -t TARGET --test-waf
+python3 pentest/endgame_pentest.py -t TARGET --test-rate
+python3 pentest/endgame_pentest.py -t TARGET --test-auth
+python3 pentest/endgame_pentest.py -t TARGET --test-headers
+```
+
+### Output
+- Color-coded terminal results with PASS/FAIL
+- Security grade (A-F)
+- JSON report file auto-saved
+
 ## Recent Changes
 
 - 2025-01-08: Imported to Replit (documentation created)
+- Added penetration testing toolkit (pentest/)
 
 ## User Preferences
 
