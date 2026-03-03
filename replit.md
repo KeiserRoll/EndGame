@@ -171,10 +171,23 @@ python3 pentest/endgame_pentest.py -t TARGET --test-headers
 - Security grade (A-F)
 - JSON report file auto-saved
 
+## Deployment Guide
+
+A complete step-by-step deployment guide is available in `DEPLOY.md`, covering:
+- OnionBalance manager setup
+- Front server configuration and deployment
+- Backend linking (remote over Tor or local proxy)
+- Branding customization
+- Security validation with the pentest toolkit
+- Scaling and monitoring
+- Troubleshooting guide
+- Pre-launch security checklist
+
 ## Recent Changes
 
 - 2025-01-08: Imported to Replit (documentation created)
 - Added penetration testing toolkit (pentest/)
+- Added comprehensive deployment guide (DEPLOY.md)
 
 ## User Preferences
 
